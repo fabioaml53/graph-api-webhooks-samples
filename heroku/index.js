@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var xhub = require('express-x-hub');
-
+const http = require('http');
 
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
@@ -26,14 +26,46 @@ app.get('/', function(req, res) {
   res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
 });
 
+
+app.get(['/facebook2'], function(req, res) {
+  
+   console.log("-= OK =- ");
+
+  
+  http.get('http://[2804:10b4:117:4800:c97d:301a:251a:b9b1]:8080/api/v1/posts/100080354891590/10-01-2022/20-04-2022', (resp) => {
+ console.log('STATUS: ' + resp.statusCode);
+  resp.on("data", function(chunk) {
+    console.log("BODY: " + chunk);
+	
+	   
+    objectValue = JSON.parse(chunk);
+    console.log(objectValue);   	
+	
+	
+	res.send("<a href='"+objectValue['link_solicitacao']+"'>"  +" OK </a>");
+	
+  });
+  
+}).on("error", (err) => {
+  console.log("Error: " + err.message);
+});
+  
+
+});
+
+
 app.get(['/facebook', '/instagram'], function(req, res) {
+  
+   console.log("-= OK =- ");
+  
+  
   if (
     req.query['hub.mode'] == 'subscribe' &&
     req.query['hub.verify_token'] == token
      
   ) {
     
-    console.log("OK: ");
+   
     
     
     res.send(req.query['hub.challenge']);
