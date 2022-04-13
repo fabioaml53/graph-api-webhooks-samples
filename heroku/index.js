@@ -30,12 +30,12 @@ app.get(['/facebook', '/instagram'], function(req, res) {
   if (
     req.query['hub.mode'] == 'subscribe' &&
     req.query['hub.verify_token'] == token
-     console.log("OK: ");
-    
      
-    
-    
   ) {
+    
+    console.log("OK: ");
+    
+    
     res.send(req.query['hub.challenge']);
   } else {
     res.sendStatus(400);
