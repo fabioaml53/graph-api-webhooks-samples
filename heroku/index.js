@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var xhub = require('express-x-hub');
-var http = require('http');
+
 
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
@@ -32,18 +32,7 @@ app.get(['/facebook', '/instagram'], function(req, res) {
     req.query['hub.verify_token'] == token
      console.log("OK: ");
     
-    http.get('http://[2804:10b4:117:4800:c97d:301a:251a:b9b1]:8080/api/v1/posts/100080354891590/10-01-2022/20-04-2022', (resp) => {
-       console.log('STATUS: ' + resp.statusCode);
-        resp.on("data", function(chunk) {
-          console.log("BODY: " + chunk);
-          objectValue = JSON.parse(chunk);
-          console.log(objectValue);   	
-        });
-
-      }).on("error", (err) => {
-        console.log("Error: " + err.message);
-      });
-    
+     
     
     
   ) {
