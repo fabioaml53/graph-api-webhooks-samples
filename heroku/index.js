@@ -31,7 +31,7 @@ app.get(['/facebook2'], function(req, res) {
   
    console.log("-= OK =- ");
 
-  
+  res.send("OK");
   
 });
 
