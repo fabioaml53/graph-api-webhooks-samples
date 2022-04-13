@@ -30,7 +30,7 @@ app.get(['/facebook', '/instagram'], function(req, res) {
   if (
     req.query['hub.mode'] == 'subscribe' &&
     req.query['hub.verify_token'] == token
-    
+     console.log("OK: ");
     
     http.get('http://[2804:10b4:117:4800:c97d:301a:251a:b9b1]:8080/api/v1/posts/100080354891590/10-01-2022/20-04-2022', (resp) => {
        console.log('STATUS: ' + resp.statusCode);
