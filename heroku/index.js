@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var xhub = require('express-x-hub');
-const http = require('http');
+var http = require('http');
 
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
@@ -32,7 +32,7 @@ app.get(['/facebook2'], function(req, res) {
    console.log("-= OK =- ");
 
   
-  var http = require('http');
+
 
 var options = {
   host: 'www.nodejitsu.com',
