@@ -30,37 +30,10 @@ app.get('/', function(req, res) {
 app.get(['/facebook2'], function(req, res) {
   
    console.log("-= OK =- ");
-
   
-
-
-var options = {
-  host: 'www.nodejitsu.com',
-  path: '/',
-  port: '1338',
-  //This is the only line that is new. `headers` is an object with the headers to request
-  headers: {'custom': 'Custom Header Demo works'}
-};
-
-callback = function(response) {
-  var str = ''
-  response.on('data', function (chunk) {
-    str += chunk;
-  });
-
-  response.on('end', function () {
-    console.log(str);
-  });
-}
-
-var req = http.request(options, callback);
-req.end();
+   console.log("Recebido:" + req.query['field']);
   
-  
-  
-  
-  res.send("OK");
-  
+   res.send("OK");
 });
 
 
